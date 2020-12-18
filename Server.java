@@ -21,9 +21,22 @@ public class Server {
         PrintWriter outServer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socClient.getOutputStream())), true);
 
         // Read message sent by the client
-        String str = inServer.readLine();
-        String strUpper = str.toUpperCase();
-        System.out.println("The msg was " + strUpper);
+        int n = Integer.parseInt(inServer.readLine());
+
+        for(int i = 2; i<=n;){
+            int premier = 1;
+            for(int loop = 2; loop <=i; loop++) {
+               if((i % loop) == 0 && loop!=i) {
+                  premier = 0;
+               }
+            }
+            if (premier != 0){
+               System.out.println(i+" est un nombre premier");
+               i++;
+            }
+            else
+            i ++;
+         }        
 
         // Close in / out
         inServer.close();

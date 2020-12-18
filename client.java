@@ -1,5 +1,5 @@
 import java.io.*;
-import java.net.Socket;
+import java.net.*;
 
 public class Client {
 
@@ -16,9 +16,9 @@ public class Client {
         // create in / out
         BufferedReader inClient = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         PrintWriter outClient = new PrintWriter(new BufferedWriter(new OutputStreamWriter(socket.getOutputStream())), true);
-
-        String str = "Hello World";
-        outClient.println(str); // send msg
+        BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(stdIn.readLine());
+        outClient.println(n); // send msg
 
         //close in / out
         inClient.close();
